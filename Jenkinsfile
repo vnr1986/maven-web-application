@@ -10,4 +10,12 @@ def mvnHome= tool name: "maven3.8.5"
               sh "${mvnHome}/bin/mvn clean package"
     }//stage2 ending brace
     
+    stage("3-SQreport"){//stage3 starting brace
+              sh "${mvnHome}/bin/mvn sonar:sonar"
+    }//stage3 ending brace
+    
+    stage("4-uploadToAR"){//stage4 starting brace
+              sh "${mvnHome}/bin/mvn deploy"
+    }//stage4 ending brace
+    
 }//node ending brace
