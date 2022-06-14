@@ -1,41 +1,44 @@
 pipeline{
+
     agent any
+    
     tools{
         maven "maven3.8.5" 
-    }
+    }//tools ending tag
     
     options {
+        timestamps()
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '5', numToKeepStr: '5')
-    }
+    }//options ending tag
     
     triggers {
         pollSCM '* * * * *'
-    }
+    }//triggers ending tag
     
     stages{
     
-        stage('getCodeFromSCM'){
+        stage('checkout'){
             steps{
                 git branch: 'developement', credentialsId: '0b2294a7-f911-435d-8311-56b526a82904', url: 'https://github.com/vnr1986/maven-web-application.git'
             }
         }//stage1 ending tag
         
-        stage('buildPackaget'){
+        stage('build'){
             steps{
                 sh "mvn clean package"
-            }    
+            }//steps ending tag    
         }//stage2 ending tag
         
         stage('sqReport'){
             steps{
                 sh "mvn sonar:sonar"
-            }    
+            }steps ending tag    
         }//stage3 ending tag
         
         stage('deployInAppServer'){
             steps{
                 sh "mvn deploy"
-            }    
+            }//steps ending tag    
         }//stage4 ending tag
         
     }//stages ending tag
