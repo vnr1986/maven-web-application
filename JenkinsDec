@@ -19,7 +19,7 @@ pipeline{
     
         stage('checkout'){
             steps{
-                git branch: 'developement', credentialsId: '0b2294a7-f911-435d-8311-56b526a82904', url: 'https://github.com/vnr1986/maven-web-application.git'
+                git branch: 'development', credentialsId: '9fcf7490-03da-413f-8ad9-49d383282524', url: 'https://github.com/vnr1986/maven-web-application.git'
             }
         }//stage1 ending tag
         
