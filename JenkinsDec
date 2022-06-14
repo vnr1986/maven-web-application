@@ -29,13 +29,13 @@ pipeline{
         }//steps ending tag    
         }//stage2 ending tag
         
-        stage("sqReport"){
+        stage("sonaQubeReport"){
             steps{
                 sh "mvn sonar:sonar"
             }steps ending tag    
         }//stage3 ending tag
         
-        stage("deployInAppServer"){
+        stage("uploadArtifact"){
             steps{
                 sh "mvn deploy"
             }//steps ending tag    
