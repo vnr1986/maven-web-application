@@ -103,7 +103,7 @@
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>mv_hst_snapshot</name>
-	      <url>http://13.126.24.205:8081/repository/nuget-hosted/</url>
+	      <url>http://13.126.24.205:8081/repository/mv_hst_snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
