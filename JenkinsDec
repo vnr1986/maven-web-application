@@ -17,26 +17,26 @@ pipeline{
     
     stages{
     
-        stage{
-        steps('checkout'){
+        stage("checkout"){
+        steps{
             git branch: 'development', credentialsId: '9fcf7490-03da-413f-8ad9-49d383282524', url: 'https://github.com/vnr1986/maven-web-application.git'
         }//steps ending tag
         }//stage1 ending tag
         
-        stage{
-        steps('build'){
+        stage("build"){
+        steps{
              sh "mvn clean package"
         }//steps ending tag    
         }//stage2 ending tag
         
-        stage{
-            steps('sqReport'){
+        stage("sqReport"){
+            steps{
                 sh "mvn sonar:sonar"
             }steps ending tag    
         }//stage3 ending tag
         
-        stage{
-            steps('deployInAppServer'){
+        stage("deployInAppServer"){
+            steps{
                 sh "mvn deploy"
             }//steps ending tag    
         }//stage4 ending tag
