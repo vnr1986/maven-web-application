@@ -43,5 +43,5 @@ stage('ExecuteSonarqubeReport')
 	sh "mvn deploy"
 	}
   }
-
+}
 }//pipeline ending tag
