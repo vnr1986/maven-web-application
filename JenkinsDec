@@ -13,25 +13,26 @@ pipeline{
     }
     
     stages{
-        stage('1-getCodeFromSCM'){
+    
+        stage('getCodeFromSCM'){
             steps{
                 git branch: 'developement', credentialsId: '0b2294a7-f911-435d-8311-56b526a82904', url: 'https://github.com/vnr1986/maven-web-application.git'
             }
         }//stage1 ending tag
         
-        stage('2-buildPackaget'){
+        stage('buildPackaget'){
             steps{
                 sh "mvn clean package"
             }    
         }//stage2 ending tag
         
-        stage('3-sqReport'){
+        stage('sqReport'){
             steps{
                 sh "mvn sonar:sonar"
             }    
         }//stage3 ending tag
         
-        stage('4-deployInAppServer'){
+        stage('deployInAppServer'){
             steps{
                 sh "mvn deploy"
             }    
