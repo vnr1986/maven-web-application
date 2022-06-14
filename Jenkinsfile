@@ -21,7 +21,7 @@ def mvnHome= tool name: "maven3.8.5"
     }//stage4 ending brace
     
     stage("Deploy"){
-        sshagent(['e4d95cbf-3d67-41bd-8e57-1b0810dd9431']){
+        sshagent(['e4d95cbf-3d67-41bd-8e57-1b0810dd9431']) -p "passw0rd"{
             sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@172.31.13.206:/opt/apache-tomcat-9.0.63/webapps/"
         }//ssh closing brace
     }//stage5 ending brace
