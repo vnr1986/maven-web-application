@@ -20,4 +20,9 @@ def mvnHome= tool name: "maven3.8.5"
               sh "${mvnHome}/bin/mvn deploy"
     }//stage4 ending brace
     
+    stage("5-Deploy"){
+        sshagent(['e4d95cbf-3d67-41bd-8e57-1b0810dd9431']) {
+            sh "scp target/maven-web-application.war ec2user@172.31.13.206/opt/apache-tomcat-9.0.63/webapps"
+    }//ssh closing brace
+ }//stage5 ending brace
 }//node ending brace
