@@ -14,33 +14,34 @@ pipeline{
     triggers {
         pollSCM '* * * * *'
     }//triggers ending tag
-    
     stages{
-    
-        stage("checkout"){
-        steps{
-            git branch: 'development', credentialsId: '9fcf7490-03da-413f-8ad9-49d383282524', url: 'https://github.com/vnr1986/maven-web-application.git'
-        }//steps ending tag
-        }//stage1 ending tag
-        
-        stage("build"){
-        steps{
-             sh "mvn clean package"
-        }//steps ending tag    
-        }//stage2 ending tag
-        
-        stage("sonaQubeReport"){
-            steps{
-                sh "mvn sonar:sonar"
-            }steps ending tag    
-        }//stage3 ending tag
-        
-        stage("uploadArtifact"){
-            steps{
-                sh "mvn deploy"
-            }//steps ending tag    
-        }//stage4 ending tag
-        
-    }//stages ending tag
+
+  stage('CheckOutCode')
+  {
+    steps{
+    git branch: 'development', credentialsId: '9fcf7490-03da-413f-8ad9-49d383282524', url: 'https://github.com/vnr1986/maven-web-application.git'
+	}
+  }
+  
+  stage('Build')
+  {
+   steps{
+   sh "mvn clean package"
+   }
+  }
+
+stage('ExecuteSonarqubeReport')
+  {
+    steps{
+	sh "mvn sonar:sonar"
+	}
+  }
+  
+  stage('UploadArtifactsintoNexus')
+  {
+    steps{
+	sh "mvn deploy"
+	}
+  }
 
 }//pipeline ending tag
