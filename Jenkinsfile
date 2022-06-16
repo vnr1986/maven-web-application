@@ -25,4 +25,9 @@ def mvnHome= tool name: "maven3.8.5"
             sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@172.31.13.206:/opt/apache-tomcat-9.0.63/webapps/"
         }//ssh closing brace
     }//stage5 ending brace
+    
+    stage("Upstream"){
+        build 'FreeStyle_First'
+    }//stage6 ending brace
+    
 }//node ending brace
