@@ -14,7 +14,12 @@ pipeline{
     triggers {
         pollSCM '* * * * *'
     }//triggers ending tag
-    stages{
+ 
+ parameters {
+  choice choices: ['development', 'master', 'test', 'qa'], description: 'Select the Branch', name: 'BranchName'
+ }
+    
+ stages{
 
   stage('CheckOutCode')
   {
