@@ -1,4 +1,4 @@
-node('master'){//node starting brace
+node{//node starting brace
     
 def mvnHome= tool name: "maven3.8.5"
     timestamps{}
