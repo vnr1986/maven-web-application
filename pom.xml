@@ -148,6 +148,14 @@
                                         <wtpContextName>maven-web-application</wtpContextName>
                                 </configuration>
                         </plugin>
+                        <plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-war-plugin</artifactId>
+                                <version>3.3.2</version> <!-- Use an appropriate version -->
+                                <configuration>
+                                       <!-- Configuration options for the plugin -->
+                                </configuration>
+                       </plugin>
 
 <!--    <plugin>
             <groupId>org.wildfly.plugins</groupId>
